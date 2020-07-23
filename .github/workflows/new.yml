@@ -31,4 +31,4 @@ jobs:
         script: |
           curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/master/build.sh > build.sh
           chmod +x ./build.sh
-          #./build.sh 18.194.88.189 ${{ secrets.MIKKOKOTILA_TOKEN }}
+          ./build.sh 18.194.88.189 ${{ secrets.MIKKOKOTILA_TOKEN }}
