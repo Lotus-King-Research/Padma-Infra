@@ -1,36 +1,12 @@
-IP=$1
-MIKKOKOTILA_TOKEN=$2
+MIKKOKOTILA_TOKEN=$1
 
 sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get dist-upgrade -y
 sudo apt-get install nginx -y
-sudo apt-get install python3-pip -y
-sudo apt-get install git -y
-sudo apt-get install enchant -y
-sudo apt-get install unzip -y
-sudo apt-get install wget -y
 
-git clone https://github.com/mikkokotila/Padma.git
-cd Padma
-pip3 install -r requirements.txt
-python3 -m spacy download en
+curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/master/Padma.conf > Padma.conf
 
-wget -qq --show-progress https://goo.gl/GyTv7n -O /tmp/dictionaries.zip
-unzip -qq -o /tmp/dictionaries.zip -d /tmp
-
-wget -qq --show-progress https://github.com/mikkokotila/Rinchen-Terdzo-Tokenized/raw/master/docs/docs.zip -O /tmp/docs.zip
-unzip -qq -o /tmp/docs.zip -d /tmp/docs/
-
-wget -qq --show-progress https://github.com/mikkokotila/Rinchen-Terdzo-Tokenized/raw/master/tokens/tokens.zip -O /tmp/tokens.zip
-unzip -qq -o /tmp/tokens.zip -d /tmp/tokens
-
-sudo systemctl nginx stop
-sudo sed "s/_IP_/$IP/" server/nginx.conf > /etc/nginx/nginx.conf
-sudo systemctl nginx start
-
-# install docker
-sudo apt-get update -y
+sudo mv Padma.conf /etc/nginx/sites-enabled/Padma.conf
+sudo nginx -s reload
 
 sudo apt-get install \
   apt-transport-https \
@@ -54,6 +30,5 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 sudo docker login docker.pkg.github.com --username mikkokotila --password $MIKKOKOTILA_TOKEN
 sudo docker pull docker.pkg.github.com/mikkokotila/padma/core_api:master
 NEW_IMAGE_ID=$(sudo docker images | grep core_api | tail -1 | tr -s ' ' | cut -d ' ' -f3)
-sudo docker stop $CURRENT_IMAGE_ID
 sudo docker run --restart unless-stopped -p 5000:5000 $NEW_IMAGE_ID
 echo $NEW_IMAGE_ID > current_image_id.txt
