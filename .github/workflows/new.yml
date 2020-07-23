@@ -33,4 +33,4 @@ jobs:
         script: |
           chmod +x ./build.sh
           #./build.sh $IP ${{ secrets.MIKKOKOTILA_TOKEN }}
-          echo $IP ${{ secrets.MIKKOKOTILA_TOKEN}}
+          echo $IP ${{ secrets.MIKKOKOTILA_TOKEN}} 
