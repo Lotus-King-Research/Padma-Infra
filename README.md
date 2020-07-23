@@ -9,5 +9,3 @@
 4) [Make PR](https://github.com/mikkokotila/Padma-Infra/compare) to `master`
 
 <hr>
-
-Let the good times roll.
