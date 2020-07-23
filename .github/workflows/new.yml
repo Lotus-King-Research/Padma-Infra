@@ -24,11 +24,11 @@ jobs:
     - name: Build
       uses: appleboy/ssh-action@master
       with:
-        host: 18.194.88.189
+        host: 18.197.202.223
         username: ubuntu
         key: ${{ secrets.PADMA }}
         command_timeout: 5m
         script: |
           curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/master/build.sh > build.sh
           chmod +x ./build.sh
-          ./build.sh 18.194.88.189 ${{ secrets.MIKKOKOTILA_TOKEN }}
+          ./build.sh ${{ secrets.MIKKOKOTILA_TOKEN }}
