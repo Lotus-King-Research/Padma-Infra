@@ -22,15 +22,12 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Build
-      env:
-        IP: 18.194.88.189
       uses: appleboy/ssh-action@master
       with:
-        host: $IP
+        host: 18.194.88.189
         username: ubuntu
         key: ${{ secrets.PADMA }}
         command_timeout: 5m
         script: |
           chmod +x ./build.sh
-          #./build.sh $IP ${{ secrets.MIKKOKOTILA_TOKEN }}
-          echo $IP ${{ secrets.MIKKOKOTILA_TOKEN}} 
+          #./build.sh 18.194.88.189 ${{ secrets.MIKKOKOTILA_TOKEN }}
