@@ -1,3 +1,6 @@
+IP=$1
+MIKKOKOTILA_TOKEN=$2
+
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
@@ -48,7 +51,7 @@ sudo add-apt-repository \
 sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
-sudo docker login docker.pkg.github.com --username mikkokotila --password ${{ secrets.MIKKOKOTILA_TOKEN }}
+sudo docker login docker.pkg.github.com --username mikkokotila --password $MIKKOKOTILA_TOKEN
 sudo docker pull docker.pkg.github.com/mikkokotila/padma/core_api:master
 NEW_IMAGE_ID=$(sudo docker images | grep core_api | tail -1 | tr -s ' ' | cut -d ' ' -f3)
 sudo docker stop $CURRENT_IMAGE_ID
