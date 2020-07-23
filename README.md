@@ -6,4 +6,6 @@
 
 3) and then change IP address here: [`Padma.conf`](https://github.com/mikkokotila/Padma-Infra/blob/a0cec49bb6b36eefa3717d150d8ebfffb7edc9f0/Padma.conf#L3)
 
+4) [Make PR](https://github.com/mikkokotila/Padma-Infra/compare) to `master`
+
 Let the good times roll.
