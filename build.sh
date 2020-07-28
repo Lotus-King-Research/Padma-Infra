@@ -45,11 +45,11 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 sudo docker login docker.pkg.github.com --username mikkokotila --password $MIKKOKOTILA_TOKEN
 
 # run Padma-API
-sudo docker pull docker.pkg.github.com/mikkokotila/padma/core_api:master
+sudo docker pull docker.pkg.github.com/mikkokotila/padma/core_api:staging
 NEW_IMAGE_ID=$(sudo docker images | grep core_api | grep staging | tail -1 | tr -s ' ' | cut -d ' ' -f3)
 sudo docker run --restart unless-stopped -v /home/ubuntu/Padma-Data:/tmp --name Padma-API -p 5000:5000 --detach $NEW_IMAGE_ID;
 
 # run Padma-Frontend
-sudo docker pull docker.pkg.github.com/mikkokotila/padma-frontend/frontend:master
+sudo docker pull docker.pkg.github.com/mikkokotila/padma-frontend/frontend:staging
 NEW_IMAGE_ID=$(sudo docker images | grep frontend | grep staging | tail -1 | tr -s ' ' | cut -d ' ' -f3)
 sudo docker run --restart unless-stopped -p 8080:8080 --detach $NEW_IMAGE_ID;
