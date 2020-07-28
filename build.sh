@@ -52,4 +52,4 @@ sudo docker run --restart unless-stopped -v /home/ubuntu/Padma-Data:/tmp -p 5000
 # run Padma-Frontend
 sudo docker pull docker.pkg.github.com/mikkokotila/padma-frontend/frontend:master
 NEW_IMAGE_ID=$(sudo docker images | grep frontend | tail -1 | tr -s ' ' | cut -d ' ' -f3)
-sudo docker run --restart unless-stopped -v /home/ubuntu/Padma-Data:/tmp -p 8080:8080 --detach $NEW_IMAGE_ID --name Padma-Frontend;
+sudo docker run --restart unless-stopped -p 8080:8080 --detach $NEW_IMAGE_ID;
