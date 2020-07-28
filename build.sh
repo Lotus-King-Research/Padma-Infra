@@ -1,13 +1,29 @@
 MIKKOKOTILA_TOKEN=$1
 
 sudo apt-get update -y
+sudo apt install unzip
+
+# install and configure nginx
 sudo apt-get install nginx -y
 
-curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/master/Padma.conf > Padma.conf
+curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/master/Padma-API.conf > Padma-API.conf
+curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/master/Padma-Frontend.conf > Padma-Frontend.conf
 
-sudo mv Padma.conf /etc/nginx/sites-enabled/Padma.conf
+sudo mv Padma-API.conf /etc/nginx/sites-enabled/Padma-API.conf
+sudo mv Padma-API.conf /etc/nginx/sites-enabled/Padma-Frontend.conf
 sudo nginx -s reload
 
+# download and unpack data
+wget -qq --show-progress https://goo.gl/GyTv7n -O /tmp/dictionaries.zip
+unzip -qq -o /tmp/dictionaries.zip -d /home/ubuntu/Padma-Data
+
+wget -qq --show-progress https://github.com/mikkokotila/Rinchen-Terdzo-Tokenized/raw/master/docs/docs.zip -O /tmp/docs.zip
+unzip -qq -o /tmp/docs.zip -d /home/ubuntu/Padma-Data/docs/
+
+wget -qq --show-progress https://github.com/mikkokotila/Rinchen-Terdzo-Tokenized/raw/master/tokens/tokens.zip -O /tmp/tokens.zip
+unzip -qq -o /tmp/tokens.zip -d /home/ubuntu/Padma-Data/tokens/
+
+# setup and run docker
 sudo apt-get install \
   apt-transport-https \
   ca-certificates \
@@ -26,9 +42,14 @@ sudo add-apt-repository \
 
 sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
-
 sudo docker login docker.pkg.github.com --username mikkokotila --password $MIKKOKOTILA_TOKEN
+
+# run Padma-API
 sudo docker pull docker.pkg.github.com/mikkokotila/padma/core_api:master
 NEW_IMAGE_ID=$(sudo docker images | grep core_api | tail -1 | tr -s ' ' | cut -d ' ' -f3)
-sudo docker run --restart unless-stopped -p 5000:5000 $NEW_IMAGE_ID
-echo $NEW_IMAGE_ID > current_image_id.txt
+sudo docker run --restart unless-stopped -v /home/ubuntu/Padma-Data:/tmp -p 5000:5000 $NEW_IMAGE_ID --name Padma-API;
+
+# run Padma-Frontend
+sudo docker pull docker.pkg.github.com/mikkokotila/padma/frontend:master
+NEW_IMAGE_ID=$(sudo docker images | grep frontend | tail -1 | tr -s ' ' | cut -d ' ' -f3)
+sudo docker run --restart unless-stopped -v /home/ubuntu/Padma-Data:/tmp -p 8080:8080 $NEW_IMAGE_ID --name Padma-Frontend;
