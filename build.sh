@@ -10,7 +10,7 @@ curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/master/Padma-API.
 curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/master/Padma-Frontend.conf > Padma-Frontend.conf
 
 sudo mv Padma-API.conf /etc/nginx/sites-enabled/Padma-API.conf
-sudo mv Padma-API.conf /etc/nginx/sites-enabled/Padma-Frontend.conf
+sudo mv Padma-Frontend.conf /etc/nginx/sites-enabled/Padma-Frontend.conf
 sudo nginx -s reload
 
 # download and unpack data
