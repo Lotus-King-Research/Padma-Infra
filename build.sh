@@ -46,10 +46,10 @@ sudo docker login docker.pkg.github.com --username mikkokotila --password $MIKKO
 
 # run Padma-API
 sudo docker pull docker.pkg.github.com/mikkokotila/padma/core_api:master
-NEW_IMAGE_ID=$(sudo docker images | grep core_api | tail -1 | tr -s ' ' | cut -d ' ' -f3)
+NEW_IMAGE_ID=$(sudo docker images | grep core_api | staging | tail -1 | tr -s ' ' | cut -d ' ' -f3)
 sudo docker run --restart unless-stopped -v /home/ubuntu/Padma-Data:/tmp -p 5000:5000 --detach $NEW_IMAGE_ID --name Padma-API;
 
 # run Padma-Frontend
 sudo docker pull docker.pkg.github.com/mikkokotila/padma-frontend/frontend:master
-NEW_IMAGE_ID=$(sudo docker images | grep frontend | tail -1 | tr -s ' ' | cut -d ' ' -f3)
+NEW_IMAGE_ID=$(sudo docker images | grep frontend | staging | tail -1 | tr -s ' ' | cut -d ' ' -f3)
 sudo docker run --restart unless-stopped -v /home/ubuntu/Padma-Data:/tmp -p 8080:8080 --detach $NEW_IMAGE_ID --name Padma-Frontend;
