@@ -14,13 +14,13 @@ sudo nginx -s reload
 
 # download and unpack data
 wget -qq --show-progress https://goo.gl/GyTv7n -O /tmp/dictionaries.zip
-unzip -qq -o /tmp/dictionaries.zip -d /tmp/Padma/
+unzip -qq -o /tmp/dictionaries.zip -d /home/ubuntu/Padma-Data
 
 wget -qq --show-progress https://github.com/mikkokotila/Rinchen-Terdzo-Tokenized/raw/master/docs/docs.zip -O /tmp/docs.zip
-unzip -qq -o /tmp/docs.zip -d /tmp/Padma/docs/
+unzip -qq -o /tmp/docs.zip -d /home/ubuntu/Padma-Data/docs/
 
 wget -qq --show-progress https://github.com/mikkokotila/Rinchen-Terdzo-Tokenized/raw/master/tokens/tokens.zip -O /tmp/tokens.zip
-unzip -qq -o /tmp/tokens.zip -d /tmp/Padma/tokens/
+unzip -qq -o /tmp/tokens.zip -d /home/ubuntu/Padma-Data/tokens/
 
 # setup and run docker
 sudo apt-get install \
@@ -46,9 +46,9 @@ sudo docker login docker.pkg.github.com --username mikkokotila --password $MIKKO
 # run Padma-API
 sudo docker pull docker.pkg.github.com/mikkokotila/padma/core_api:master
 NEW_IMAGE_ID=$(sudo docker images | grep core_api | tail -1 | tr -s ' ' | cut -d ' ' -f3)
-sudo docker run --restart unless-stopped -v /tmp/Padma:/tmp -p 5000:5000 $NEW_IMAGE_ID --name Padma-API;
+sudo docker run --restart unless-stopped -v /home/ubuntu/Padma-Data:/tmp -p 5000:5000 $NEW_IMAGE_ID --name Padma-API;
 
 # run Padma-Frontend
 sudo docker pull docker.pkg.github.com/mikkokotila/padma/frontend:master
 NEW_IMAGE_ID=$(sudo docker images | grep frontend | tail -1 | tr -s ' ' | cut -d ' ' -f3)
-sudo docker run --restart unless-stopped -v /tmp/Padma:/tmp -p 8080:8080 $NEW_IMAGE_ID --name Padma-Frontend;
+sudo docker run --restart unless-stopped -v /home/ubuntu/Padma-Data:/tmp -p 8080:8080 $NEW_IMAGE_ID --name Padma-Frontend;
