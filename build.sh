@@ -15,13 +15,13 @@ sudo nginx -s reload
 
 # download and unpack data
 wget -qq --show-progress https://goo.gl/GyTv7n -O /tmp/dictionaries.zip
-unzip -qq -o /tmp/dictionaries.zip -d /home/ubuntu/Padma-Data
+sudo unzip -qq -o /tmp/dictionaries.zip -d /home/ubuntu/Padma-Data
 
 wget -qq --show-progress https://github.com/mikkokotila/Rinchen-Terdzo-Tokenized/raw/master/docs/docs.zip -O /tmp/docs.zip
-unzip -qq -o /tmp/docs.zip -d /home/ubuntu/Padma-Data/docs/
+sudo unzip -qq -o /tmp/docs.zip -d /home/ubuntu/Padma-Data/docs/
 
 wget -qq --show-progress https://github.com/mikkokotila/Rinchen-Terdzo-Tokenized/raw/master/tokens/tokens.zip -O /tmp/tokens.zip
-unzip -qq -o /tmp/tokens.zip -d /home/ubuntu/Padma-Data/tokens/
+sudo unzip -qq -o /tmp/tokens.zip -d /home/ubuntu/Padma-Data/tokens/
 
 # setup and run docker
 sudo apt-get install \
