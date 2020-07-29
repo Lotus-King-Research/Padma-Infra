@@ -24,7 +24,7 @@ jobs:
     - name: Build
       uses: appleboy/ssh-action@master
       with:
-        host: 
+        host: 18.157.93.60
         username: ubuntu
         key: ${{ secrets.PADMA }}
         command_timeout: 5m
