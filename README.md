@@ -1,9 +1,11 @@
 # Setup New Box
 
-1) create a new branch using the box IP address as the branch name
+1) Create a new branch named `temp` from the `master` branch
+2) Switch to `temp` so that this README.md is from that branch
+3) Change the IP address in [Build-New-Host.yml](https://github.com/Lotus-King-Research/Padma-Infra/blob/temp/.github/workflows/Build-New-Host.yml)
+4) Change the URL in [Padma-API.conf](https://github.com/Lotus-King-Research/Padma-Infra/blob/temp/Padma-API.conf)
+5) Change the URL in [Padma-Frontend.conf](https://github.com/Lotus-King-Research/Padma-Infra/blob/temp/Padma-Frontend.conf)
+6) Create a new branch `_temp_` from `temp` and the deploy will take place
+7) Watch it happen from Actions tab
 
-2) change IP address here: [`/.github/workflows/new.yml`](https://github.com/mikkokotila/Padma-Infra/blob/a0cec49bb6b36eefa3717d150d8ebfffb7edc9f0/.github/workflows/new.yml#L27)
-
-3) [Make PR](https://github.com/mikkokotila/Padma-Infra/compare) to `master`
-
-<hr>
+**NOTE: Cloudflare DNS has to be updated if the domain is new.**
