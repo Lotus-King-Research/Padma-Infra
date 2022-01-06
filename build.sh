@@ -31,6 +31,12 @@ sudo add-apt-repository \
    stable"
 
 sudo apt-get update -y
+
+sudo snap install core
+sudo snap refresh core
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 sudo docker login docker.pkg.github.com --username mikkokotila --password $MIKKOKOTILA_TOKEN
 
