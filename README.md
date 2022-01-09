@@ -1,11 +1,39 @@
-# Setup New Box
+<h1 align="center">
+  <br>
+  <a href="http://eka.to"><img src="https://raw.githubusercontent.com/Lotus-King-Research/Home/main/Assets/Images/Lotus-King-Research-Logo-Transparent.png" alt="Lotus King Research" width="200"></a>
+  <br>
+</h1>
 
-1) Create a new branch named `temp` from the `master` branch
-2) Switch to `temp` so that this README.md is from that branch
-3) Change the IP address in [Build-New-Host.yml](https://github.com/Lotus-King-Research/Padma-Infra/blob/temp/.github/workflows/Build-New-Host.yml)
-4) Change the URL in [Padma-API.conf](https://github.com/Lotus-King-Research/Padma-Infra/blob/temp/Padma-API.conf)
-5) Change the URL in [Padma-Frontend.conf](https://github.com/Lotus-King-Research/Padma-Infra/blob/temp/Padma-Frontend.conf)
-6) Create a new branch `_temp_` from `temp` and the deploy will take place
-7) Watch it happen from Actions tab
+<h3 align="center">Padma is a next-generation Tibetan language translation eco-system for Dharma texts. </h3>
 
-**NOTE: Cloudflare DNS has to be updated if the domain is new.**
+<p align="center">
+  
+  <a href="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png">
+    <img width=150px src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Cc-by-nc-sa_icon.svg/1280px-Cc-by-nc-sa_icon.svg.png" alt="License">
+  </a>
+</p>
+
+<p align="center">
+  <a href="#description">Description</a> •
+  <a href="#owner">Owner</a> •
+  <a href="#integrations">Integrations</a> •
+  <a href="#docs">Docs</a>
+</p>
+<hr>
+
+## Description
+
+Repository for Padma infastructure-as-code. Used for deploying staging and production environments as-code.
+
+## Owner
+
+- [@mikkokotila](https://github.com/mikkokotila)
+
+## Integrations
+
+- [Padma-Frontend](https://github.com/Lotus-King-Research/Padma-Frontend/)
+- [Padma-Backend](https://github.com/Lotus-King-Research/Padma-Frontend/)
+
+## Docs
+
+[Docs](https://github.com/Lotus-King-Research/Padma-Infra/tree/master/docs)
