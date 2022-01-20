@@ -6,8 +6,8 @@ sudo apt install unzip
 # install and configure nginx
 sudo apt-get install nginx -y
 
-curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/master/Padma-API.conf > Padma-API.conf
-curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/master/Padma-Frontend.conf > Padma-Frontend.conf
+curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/_deploy_/Padma-API.conf > Padma-API.conf
+curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/_deploy_/Padma-Frontend.conf > Padma-Frontend.conf
 
 sudo mv Padma-API.conf /etc/nginx/sites-enabled/Padma-API.conf
 sudo mv Padma-Frontend.conf /etc/nginx/sites-enabled/Padma-Frontend.conf
