@@ -24,7 +24,7 @@ jobs:
     - name: Build the Environment
       uses: appleboy/ssh-action@master
       with:
-        host: 18.193.136.195
+        host: 3.64.158.251
         username: ubuntu
         key: ${{ secrets.PADMA }}
         command_timeout: 5m
