@@ -14,11 +14,6 @@ sudo mv Padma-API.conf /etc/nginx/sites-enabled/Padma-API.conf
 sudo mv Padma-Frontend.conf /etc/nginx/sites-enabled/Padma-Frontend.conf
 sudo nginx -s reload
 
-# install certbot
-sudo snap install core; sudo snap refresh core
-sudo snap install --classic certbot
-sudo ln -s /snap/bin/certbot /usr/bin/certbot
-
 # setup and run docker
 sudo apt-get install \
   apt-transport-https \
