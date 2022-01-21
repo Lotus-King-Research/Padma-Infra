@@ -2,6 +2,7 @@ MIKKOKOTILA_TOKEN=$1
 
 sudo apt-get update -y
 sudo apt install unzip
+sudo journalctl --rotate
 
 # install and configure nginx
 sudo apt-get install nginx -y
