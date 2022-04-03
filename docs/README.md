@@ -7,5 +7,6 @@
 5) Change the URL in [Padma-Frontend.conf](https://github.com/Lotus-King-Research/Padma-Infra/blob/temp/Padma-Frontend.conf)
 6) Create a new branch `_deploy_` from `temp` and the deploy will take place
 7) Watch it happen from Actions tab
+8) SSH into the box and run `sudo certbot --nginx`
 
 **NOTE: Cloudflare DNS has to be updated if the domain is new.**
