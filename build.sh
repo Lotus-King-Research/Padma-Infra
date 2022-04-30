@@ -7,8 +7,8 @@ sudo journalctl --rotate
 # install and configure nginx
 sudo apt-get install nginx -y
 
-curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/_deploy_/Padma-API.conf > Padma-API.conf
-curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/_deploy_/Padma-Frontend.conf > Padma-Frontend.conf
+curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/production/Padma-API.conf > Padma-API.conf
+curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/production/Padma-Frontend.conf > Padma-Frontend.conf
 
 sudo mv Padma-API.conf /etc/nginx/sites-enabled/Padma-API.conf
 sudo mv Padma-Frontend.conf /etc/nginx/sites-enabled/Padma-Frontend.conf
@@ -38,7 +38,7 @@ sudo snap refresh core
 sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
-sudo certbot --nginx --non-interactive --agree-tos -m mailme@mikkokotila.com -d staging.padma.io -d staging-api.padma.io
+sudo certbot --nginx --non-interactive --agree-tos -m mailme@mikkokotila.com -d padma.io -d api.padma.io
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 sudo docker login docker.pkg.github.com --username mikkokotila --password $MIKKOKOTILA_TOKEN
@@ -46,7 +46,7 @@ sudo docker login docker.pkg.github.com --username mikkokotila --password $MIKKO
 # run Padma-API
 sudo docker pull ghcr.io/lotus-king-research/padma-backend/core_api:master
 NEW_IMAGE_ID=$(sudo docker images | grep core_api | grep master | tail -1 | tr -s ' ' | cut -d ' ' -f3)
-sudo docker run --memory=400m --restart unless-stopped --name Padma-API -p 5000:5000 --detach $NEW_IMAGE_ID;
+sudo docker run --memory=1000m --restart unless-stopped --name Padma-API -p 5000:5000 --detach $NEW_IMAGE_ID;
 
 # run Padma-Frontend
 sudo docker pull ghcr.io/lotus-king-research/padma-frontend/frontend:master
