@@ -7,8 +7,8 @@ sudo journalctl --rotate
 # install and configure nginx
 sudo apt-get install nginx -y
 
-curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/production/Padma-API.conf > Padma-API.conf
-curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/production/Padma-Frontend.conf > Padma-Frontend.conf
+curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/staging/Padma-API.conf > Padma-API.conf
+curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/staging/Padma-Frontend.conf > Padma-Frontend.conf
 
 sudo mv Padma-API.conf /etc/nginx/sites-enabled/Padma-API.conf
 sudo mv Padma-Frontend.conf /etc/nginx/sites-enabled/Padma-Frontend.conf
@@ -38,7 +38,7 @@ sudo snap refresh core
 sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
-sudo certbot --nginx --non-interactive --agree-tos -m mailme@mikkokotila.com -d padma.io -d api.padma.io
+sudo certbot --nginx --non-interactive --agree-tos -m mailme@mikkokotila.com -d staging.padma.io -d staging-api.padma.io
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 sudo docker login docker.pkg.github.com --username mikkokotila --password $MIKKOKOTILA_TOKEN
