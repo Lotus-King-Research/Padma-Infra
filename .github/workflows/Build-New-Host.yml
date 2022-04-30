@@ -6,7 +6,7 @@ name: Build New Host
 # events but only for the master branch
 on:
   push:
-    branches: [ _deploy_ ]
+    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -24,11 +24,11 @@ jobs:
     - name: Build the Environment
       uses: appleboy/ssh-action@master
       with:
-        host: 3.64.158.251
+        host: 18.157.93.60
         username: ubuntu
         key: ${{ secrets.PADMA }}
         command_timeout: 5m
         script: |
-          curl https://raw.githubusercontent.com/Lotus-King-Research/Padma-Infra/master/build.sh > build.sh
+          curl https://raw.githubusercontent.com/Lotus-King-Research/Padma-Infra/${{ github.event.pull_request.head.ref }}/build.sh > build.sh
           chmod +x ./build.sh
           ./build.sh ${{ secrets.MIKKOKOTILA_TOKEN }}
