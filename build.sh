@@ -46,9 +46,9 @@ sudo docker login docker.pkg.github.com --username mikkokotila --password $MIKKO
 # run Padma-API
 sudo docker pull ghcr.io/lotus-king-research/padma-backend/core_api:master
 NEW_IMAGE_ID=$(sudo docker images | grep core_api | grep master | tail -1 | tr -s ' ' | cut -d ' ' -f3)
-sudo docker run --memory=1000m --restart unless-stopped --name Padma-API -p 5000:5000 --detach $NEW_IMAGE_ID;
+sudo docker run --memory=1000m --restart unless-stopped -p 5000:5000 --detach $NEW_IMAGE_ID;
 
 # run Padma-Frontend
 sudo docker pull ghcr.io/lotus-king-research/padma-frontend/frontend:master
 NEW_IMAGE_ID=$(sudo docker images | grep frontend | grep master | tail -1 | tr -s ' ' | cut -d ' ' -f3)
-sudo docker run --memory=200m --restart unless-stopped --name Padma-Frontend -p 8080:8080 --detach $NEW_IMAGE_ID;
+sudo docker run --memory=200m --restart unless-stopped -p 8080:8080 --detach $NEW_IMAGE_ID;
