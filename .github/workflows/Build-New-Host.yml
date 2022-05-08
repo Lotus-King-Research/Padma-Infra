@@ -29,6 +29,6 @@ jobs:
         key: ${{ secrets.PADMA }}
         command_timeout: 5m
         script: |
-          curl https://raw.githubusercontent.com/Lotus-King-Research/Padma-Infra/staging/build.sh > build.sh
+          curl https://raw.githubusercontent.com/Lotus-King-Research/Padma-Infra/staging.padma.io/build.sh > build.sh
           chmod +x ./build.sh
           ./build.sh ${{ secrets.MIKKOKOTILA_TOKEN }}
