@@ -26,7 +26,7 @@ jobs:
       with:
         host: 3.73.23.112
         username: ubuntu
-        key: ${{ secrets.PADMA }}
+        key: ${{ secrets.PADMA_TEST }}
         command_timeout: 5m
         script: |
           curl https://raw.githubusercontent.com/Lotus-King-Research/Padma-Infra/production/build.sh > build.sh
