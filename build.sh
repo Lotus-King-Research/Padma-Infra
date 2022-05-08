@@ -7,8 +7,8 @@ sudo journalctl --rotate
 # install and configure nginx
 sudo apt-get install nginx -y
 
-curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/production/Padma-API.conf > Padma-API.conf
-curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/production/Padma-Frontend.conf > Padma-Frontend.conf
+curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/padma.io/Padma-API.conf > Padma-API.conf
+curl https://raw.githubusercontent.com/mikkokotila/Padma-Infra/padma.io/Padma-Frontend.conf > Padma-Frontend.conf
 
 sudo mv Padma-API.conf /etc/nginx/sites-enabled/Padma-API.conf
 sudo mv Padma-Frontend.conf /etc/nginx/sites-enabled/Padma-Frontend.conf
